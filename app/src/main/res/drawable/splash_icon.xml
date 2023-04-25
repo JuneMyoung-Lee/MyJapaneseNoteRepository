@@ -5,6 +5,6 @@
             android:width="108dp"
             android:height="108dp"
             android:gravity="center"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_chicpolay" />
     </item>
 </layer-list>
