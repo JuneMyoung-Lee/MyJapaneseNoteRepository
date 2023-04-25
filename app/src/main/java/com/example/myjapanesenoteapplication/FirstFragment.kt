@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.myjapanesenoteapplication.databinding.FragmentFirstBinding
 
@@ -19,6 +20,8 @@ class FirstFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private var toast : Toast? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,8 +35,18 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        with(binding) {
+            buttonFirst.setOnClickListener {
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            }
+            buttonSecond.setOnClickListener {
+                requireActivity().runOnUiThread {
+                    toast?.cancel()
+
+                    toast = Toast.makeText(requireContext(), "추가 개발 예정", Toast.LENGTH_SHORT)
+                    toast?.show()
+                }
+            }
         }
     }
 

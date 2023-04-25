@@ -5,7 +5,31 @@
         <item name="windowSplashScreenBackground">@android:color/background_light</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
         <item name="windowSplashScreenAnimationDuration">1000</item>
-        <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/splash_branding</item>
         <item name="postSplashScreenTheme">@style/Theme.MyJapaneseNoteApplication</item>
+    </style>
+
+    <!-- Texts styles -->
+    <style name="basic_text_style" parent="@android:style/TextAppearance">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="firstBaselineToTopHeight">0dp</item>
+        <item name="autoSizeTextType">none</item>
+    </style>
+
+    <style parent="@style/basic_text_style" name="black_bold_title_40_pt_center">
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:textSize">40dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:lineHeight">48dp</item>
+        <item name="android:textColor">@color/ui_02</item>
+    </style>
+
+    <style parent="@style/basic_text_style" name="black_medium_title_24_pt_center">
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_regular</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:lineHeight">32dp</item>
+        <item name="android:textColor">@color/ui_02</item>
     </style>
 </resources>

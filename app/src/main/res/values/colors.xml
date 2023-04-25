@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="ui_02">#444444</color>
+    <color name="ui_03">#888888</color>
+    <color name="primary_01_text_color">#4373f4</color>
+    <color name="search_type_ae89f4_color">#ae89f4</color>
+    <color name="search_subway_80499c_color">#80499c</color>
+    <color name="search_subway_8936e0_color">#8936e0</color>
 </resources>
