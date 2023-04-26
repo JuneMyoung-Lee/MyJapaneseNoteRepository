@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.myjapanesenoteapplication.databinding.FragmentSecondBinding
@@ -39,25 +40,12 @@ class SecondFragment : Fragment() {
 
     private fun initViewPager() {
         with(binding) {
-            val subBannerLinearLayoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-            val adapter = JapaneseMainAdapter()
+            val linearLayoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            val adapter = JapaneseFiftyAdapter()
+            linearLayoutManager.isItemPrefetchEnabled = false
             randomViewPager.adapter = adapter
-            adapter.setItemOnClickListener(object : JapaneseMainAdapter.OnItemClickListener{
-                override fun onItemClick(item: JapaneseMainItem, position: Int) {
+            randomViewPager.offscreenPageLimit = 25
 
-                }
-            })
-            subBannerLinearLayoutManager.isItemPrefetchEnabled = false
-
-            val onPageChangeCallback = object: ViewPager2.OnPageChangeCallback(){
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-
-
-                }
-            }
-            randomViewPager.unregisterOnPageChangeCallback(onPageChangeCallback)
-            randomViewPager.registerOnPageChangeCallback(onPageChangeCallback)
             adapter.submitList(japaneseMainList.shuffled())
         }
     }
