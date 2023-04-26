@@ -20,7 +20,7 @@ class JapaneseFiftyAdapter : ListAdapter<JapaneseMainItem, JapaneseFiftyAdapter.
 
         with(holder.binding) {
             questionText.text = item.문제
-            countText.text = "${position+1}/50"
+            countText.text = "${position+1}/${currentList.size}"
             dictionText.text = item.발음
             japaneseText.text = item.일본어
 
