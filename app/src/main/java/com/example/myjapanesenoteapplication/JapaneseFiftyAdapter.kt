@@ -23,12 +23,6 @@ class JapaneseFiftyAdapter : ListAdapter<JapaneseMainItem, JapaneseFiftyAdapter.
             countText.text = "${position+1}/50"
             dictionText.text = item.발음
             japaneseText.text = item.일본어
-            if(position == 0) {
-                leftSwipeText.visibility = View.GONE
-            }
-            if(position == currentList.size - 1) {
-                rightSwipeText.visibility = View.GONE
-            }
 
             answerButton.setOnClickListener {
                 if(dictionText.visibility == View.VISIBLE) {

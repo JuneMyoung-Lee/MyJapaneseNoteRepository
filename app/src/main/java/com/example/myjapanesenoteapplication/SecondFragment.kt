@@ -1,10 +1,13 @@
 package com.example.myjapanesenoteapplication
 
+import android.graphics.Rect
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -21,12 +24,10 @@ class SecondFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -35,7 +36,9 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.bg_03)
         initViewPager()
+
     }
 
     private fun initViewPager() {
@@ -45,6 +48,23 @@ class SecondFragment : Fragment() {
             linearLayoutManager.isItemPrefetchEnabled = false
             randomViewPager.adapter = adapter
             randomViewPager.offscreenPageLimit = 25
+            val currentVisibleItemPx = 40.px
+            randomViewPager.addItemDecoration(object: RecyclerView.ItemDecoration() {
+                override fun getItemOffsets(
+                    outRect: Rect,
+                    view: View,
+                    parent: RecyclerView,
+                    state: RecyclerView.State
+                ) {
+                    outRect.right = currentVisibleItemPx
+                    outRect.left = currentVisibleItemPx
+                }
+            })
+            val nextVisibleItemPx = 20.px
+            val pageTranslationX = nextVisibleItemPx + currentVisibleItemPx
+            randomViewPager.setPageTransformer { page, position ->
+                page.translationX = -pageTranslationX * (position)
+            }
 
             adapter.submitList(japaneseMainList.shuffled())
         }

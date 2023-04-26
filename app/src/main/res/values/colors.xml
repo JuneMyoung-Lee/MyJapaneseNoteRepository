@@ -4,6 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="ui_02">#444444</color>
     <color name="ui_03">#888888</color>
+    <color name="bg_03">#f5f5f5</color>
+    <color name="line_02">#eeeeee</color>
     <color name="primary_01_text_color">#4373f4</color>
     <color name="search_subway_73b6e4_color">#73b6e4</color>
     <color name="search_type_ae89f4_color">#ae89f4</color>

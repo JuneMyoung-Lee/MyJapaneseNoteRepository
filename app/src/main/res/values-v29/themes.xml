@@ -6,4 +6,17 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
     </style>
+
+    <style name="Theme.SecondFragmentTheme" parent="Base.Theme.MyJapaneseNoteApplication">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@color/bg_03</item>
+        <item name="android:windowLightStatusBar">@color/bg_03</item>
+    </style>
+
+    <style name="MapSettingDialogTheme" parent="Base.Theme.MyJapaneseNoteApplication">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@color/bg_03</item>
+    </style>
 </resources>
