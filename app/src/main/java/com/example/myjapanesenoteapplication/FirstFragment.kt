@@ -20,8 +20,6 @@ class FirstFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private var toast : Toast? = null
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,16 +34,11 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            buttonFirst.setOnClickListener {
+            buttonSecond.setOnClickListener {
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             }
-            buttonSecond.setOnClickListener {
-                requireActivity().runOnUiThread {
-                    toast?.cancel()
-
-                    toast = Toast.makeText(requireContext(), "추가 개발 예정", Toast.LENGTH_SHORT)
-                    toast?.show()
-                }
+            buttonThird.setOnClickListener {
+                findNavController().navigate(R.id.action_FirstFragment_to_ThirdFragment)
             }
         }
     }

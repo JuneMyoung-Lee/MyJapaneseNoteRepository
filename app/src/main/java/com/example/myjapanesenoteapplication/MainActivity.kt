@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
         binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "김동현 찌끄레기년", Snackbar.LENGTH_SHORT)
+            Snackbar.make(view, "동현이 살려달라고할때까지 줘패고싶다", Snackbar.LENGTH_SHORT)
                 .setAnchorView(R.id.fab)
                 .setAction("Action", null).show()
         }
