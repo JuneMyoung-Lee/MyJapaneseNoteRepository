@@ -48,6 +48,9 @@ class JapaneseExampleDialogFragment : DialogFragment() {
 
     private fun init() {
         with(binding){
+            backButton.setOnClickListener {
+                close()
+            }
             val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             val categoryAdapter = JapaneseExampleAdapter()
             exampleRecyclerView.layoutManager = layoutManager
