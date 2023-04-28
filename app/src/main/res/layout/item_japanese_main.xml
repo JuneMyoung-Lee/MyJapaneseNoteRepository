@@ -99,6 +99,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <ImageView
+            android:id="@+id/soundButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:visibility="invisible"
+            tools:visibility="visible"
+            android:src="@drawable/sound_black"
+            app:layout_constraintTop_toTopOf="@+id/answerButton"
+            app:layout_constraintBottom_toBottomOf="@+id/answerButton"
+            app:layout_constraintStart_toEndOf="@+id/answerButton" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

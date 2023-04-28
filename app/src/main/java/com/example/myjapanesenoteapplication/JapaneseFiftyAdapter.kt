@@ -1,5 +1,6 @@
 package com.example.myjapanesenoteapplication
 
+import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myjapanesenoteapplication.databinding.ItemJapaneseMainBinding
 
 class JapaneseFiftyAdapter : ListAdapter<JapaneseMainItem, JapaneseFiftyAdapter.ItemJapaneseFiftyVH>(DIFF_CALLBACK) {
+
+    private var mediaPlayer: MediaPlayer ?= null
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ItemJapaneseFiftyVH = LayoutInflater.from(viewGroup.context)
         .let { ItemJapaneseMainBinding.inflate(it, viewGroup, false) }
@@ -26,20 +29,32 @@ class JapaneseFiftyAdapter : ListAdapter<JapaneseMainItem, JapaneseFiftyAdapter.
 
             answerButton.setOnClickListener {
                 if(dictionText.visibility == View.VISIBLE) {
-                    dictionText.visibility = View.INVISIBLE
                     answerButton.text = "정답보기"
                 } else {
-                    dictionText.visibility = View.VISIBLE
                     answerButton.text = "정답숨기기"
                 }
-
-                if(japaneseText.visibility == View.VISIBLE) {
-                    japaneseText.visibility = View.INVISIBLE
-                } else {
-                    japaneseText.visibility = View.VISIBLE
-                }
+                setVisibility(dictionText)
+                setVisibility(japaneseText)
+                setVisibility(soundButton)
             }
 
+            soundButton.setOnClickListener {
+                soundButton.setImageResource(R.drawable.sound_white)
+                mediaPlayer?.stop()
+                mediaPlayer = MediaPlayer.create(root.context, item.음성파일)
+                mediaPlayer?.setOnCompletionListener {
+                    soundButton.setImageResource(R.drawable.sound_black)
+                }
+                mediaPlayer?.start()
+            }
+        }
+    }
+
+    private fun setVisibility(view: View) {
+        if(view.visibility == View.VISIBLE) {
+            view.visibility = View.INVISIBLE
+        } else {
+            view.visibility = View.VISIBLE
         }
     }
 

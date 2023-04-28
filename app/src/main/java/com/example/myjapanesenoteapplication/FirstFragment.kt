@@ -1,5 +1,7 @@
 package com.example.myjapanesenoteapplication
 
+import android.media.MediaPlayer
+import android.media.SoundPool
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +21,8 @@ class FirstFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private var mediaPlayer: MediaPlayer ?= null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +44,14 @@ class FirstFragment : Fragment() {
             buttonThird.setOnClickListener {
                 findNavController().navigate(R.id.action_FirstFragment_to_ThirdFragment)
             }
+
         }
+    }
+
+    override fun onStop() {
+        mediaPlayer?.release()
+        mediaPlayer = null
+        super.onStop()
     }
 
     override fun onDestroyView() {
