@@ -133,4 +133,9 @@ class JapaneseExampleDialogFragment : DialogFragment() {
     companion object {
         const val dialogTag = "JapaneseExampleDialog"
     }
+
+    override fun onStop() {
+        (binding.exampleRecyclerView.adapter as JapaneseExampleAdapter).stopSound()
+        super.onStop()
+    }
 }

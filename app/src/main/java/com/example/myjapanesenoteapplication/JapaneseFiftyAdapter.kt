@@ -50,6 +50,11 @@ class JapaneseFiftyAdapter : ListAdapter<JapaneseMainItem, JapaneseFiftyAdapter.
         }
     }
 
+    fun stopSound() {
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
+
     private fun setVisibility(view: View) {
         if(view.visibility == View.VISIBLE) {
             view.visibility = View.INVISIBLE

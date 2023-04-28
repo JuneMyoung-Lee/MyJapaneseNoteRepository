@@ -1,5 +1,6 @@
 package com.example.myjapanesenoteapplication
 
+import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,8 @@ import com.example.myjapanesenoteapplication.databinding.ItemJapaneseExampleBind
 import com.example.myjapanesenoteapplication.databinding.ItemJapaneseMainBinding
 
 class JapaneseExampleAdapter : ListAdapter<JapaneseMainItem, JapaneseExampleAdapter.ItemJapaneseExampleVH>(DIFF_CALLBACK) {
+
+    private var mediaPlayer: MediaPlayer?= null
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ItemJapaneseExampleVH = LayoutInflater.from(viewGroup.context)
         .let { ItemJapaneseExampleBinding.inflate(it, viewGroup, false) }
@@ -24,7 +27,22 @@ class JapaneseExampleAdapter : ListAdapter<JapaneseMainItem, JapaneseExampleAdap
             koreanTitle.text = item.문제
             dictionTitle.text = item.발음
             japaneseTitle.text = item.일본어
+
+            soundButton.setOnClickListener {
+                soundButton.setImageResource(R.drawable.sound_white)
+                mediaPlayer?.stop()
+                mediaPlayer = MediaPlayer.create(root.context, item.음성파일)
+                mediaPlayer?.setOnCompletionListener {
+                    soundButton.setImageResource(R.drawable.sound_black)
+                }
+                mediaPlayer?.start()
+            }
         }
+    }
+
+    fun stopSound() {
+        mediaPlayer?.release()
+        mediaPlayer = null
     }
 
     class ItemJapaneseExampleVH(val binding: ItemJapaneseExampleBinding) : RecyclerView.ViewHolder(binding.root)

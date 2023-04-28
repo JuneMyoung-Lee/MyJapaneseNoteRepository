@@ -75,6 +75,11 @@ class SecondFragment : Fragment() {
         _binding = null
     }
 
+    override fun onStop() {
+        (binding.randomViewPager.adapter as JapaneseFiftyAdapter).stopSound()
+        super.onStop()
+    }
+
     private var japaneseMainList = listOf(
         JapaneseMainItem("안녕하세요(아침)", "오하요-고자이마스", "おはようございます。", R.raw.fifty_1),
         JapaneseMainItem("안녕하세요(점심)", "코온니치와", "こんにちは。", R.raw.fifty_2),

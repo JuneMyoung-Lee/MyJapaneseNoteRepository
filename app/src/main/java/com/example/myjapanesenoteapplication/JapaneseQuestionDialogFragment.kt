@@ -153,4 +153,9 @@ class JapaneseQuestionDialogFragment : DialogFragment() {
     companion object {
         const val dialogTag = "JapaneseQuestionDialog"
     }
+
+    override fun onStop() {
+        (binding.randomViewPager.adapter as JapaneseFiftyAdapter).stopSound()
+        super.onStop()
+    }
 }
